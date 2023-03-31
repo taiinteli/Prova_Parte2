@@ -5,6 +5,7 @@
 # pip install SQLALchemy # instalação do SQLALchemy 
 
 #importações das principais bibliotecas 
+from flask import session
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import mapped_column
 from sqlalchemy import create_engine
@@ -34,13 +35,15 @@ class Quantidade():
     id: Mapped[int] = mapped_column(primary_key=True)
 
 
-with Session(engine) as session:
+# POST para enivar as informações para o banco de dados e integrar com o front-end 
+
+with Session(engine) as Session:
 
     nome = NomedoJogo(
     nome1 = ["DEAD SPACE REMAKE"], 
     nome2 = ["FORSPOKEN"], 
     nome3 = ["DEAD ISLAND"],
-    nome4 = ["HOGWARTS LEGACY "],
+    nome4 = ["HOGWARTS LEGACY"],
     nome5 = ["WILD HEARTS"],
     nome6 = ["RESIDENT EVIL 4"],
     nome7= ["THE LEGEND OF ZELDA: TEARS OF THE KINGDOM"])
@@ -64,7 +67,11 @@ with Session(engine) as session:
     quantidade2 = ["8"], 
     quantidade3= ["10"], 
     ) 
+    
+    nome = NomedoJogo(nome1="DEAD SPACE REMAKE",plataforma="PS5", preço="R$ 350,00", quantidade="10" )
 
+    session.add_all([DEAD SPACE REMAKE, FORSPOKEN, DEAD ISLAND, HOGWARTS LEGACY, WILD HEARTS,RESIDENT EVIL 4, THE LEGEND OF ZELDA: TEARS OF THE KINGDOM])
+    session.comit()
 
 
     
